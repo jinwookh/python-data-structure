@@ -39,6 +39,23 @@ def recursive_dfs(vertex, visited, vertex_info):
             recursive_dfs(child, visited, vertex_info)
 
 
+def dfs(vertex_info):
+    vertexes = set(vertex_info.keys())
+    initial_vertex = vertexes.pop()
+
+    stack = [initial_vertex]
+    visited = []
+
+    while len(stack) is not 0:
+        vertex = stack.pop()
+        print(vertex, end=" ")
+        visited.append(vertex)
+
+        for child in vertex_info[vertex].child:
+            if child not in visited and child not in stack:
+                stack.append(child)
+
+
 vertex_info = make_graph(edges)
 
 print(vertex_info)
@@ -46,3 +63,4 @@ random_vertex = set(vertex_info.keys()).pop()
 
 recursive_dfs(random_vertex, {}, vertex_info)
 print()
+dfs(vertex_info)
