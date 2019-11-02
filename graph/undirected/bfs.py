@@ -1,3 +1,5 @@
+import collections
+
 
 class Vertex:
     def __init__(self, data):
@@ -32,36 +34,24 @@ def make_graph(edges):
     return vertex_with_data
 
 
-def recursive_dfs(vertex, visited, vertex_info):
-    visited[vertex] = True
-    print(vertex, end=" ")
-    for child in vertex_info[vertex].child:
-        if child not in visited.keys():
-            recursive_dfs(child, visited, vertex_info)
+def bfs(vertex_info):
+    q = collections.deque()
+    visited = set()
+    initial_vertex = set(vertex_info.keys()).pop()
 
+    q.append(initial_vertex)
 
-def dfs(vertex_info):
-    vertexes = set(vertex_info.keys())
-    initial_vertex = vertexes.pop()
-
-    stack = [initial_vertex]
-    visited = []
-
-    while len(stack) is not 0:
-        vertex = stack.pop()
+    while len(q) is not 0:
+        vertex = q.popleft()
         print(vertex, end=" ")
-        visited.append(vertex)
-
+        visited.add(vertex)
         for child in vertex_info[vertex].child:
-            if child not in visited and child not in stack:
-                stack.append(child)
+            if child not in visited and child not in q:
+                q.append(child)
 
 
 vertex_info = make_graph(edges)
 
 print(vertex_info)
-random_vertex = set(vertex_info.keys()).pop()
 
-recursive_dfs(random_vertex, {}, vertex_info)
-print()
-dfs(vertex_info)
+bfs(vertex_info)
