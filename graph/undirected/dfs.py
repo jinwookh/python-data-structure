@@ -49,12 +49,15 @@ def dfs(vertex_info):
 
     while len(stack) is not 0:
         vertex = stack.pop()
-        print(vertex, end=" ")
-        visited.append(vertex)
+        if vertex not in visited:
+            print(vertex, end=" ")
+            visited.append(vertex)
 
         for child in vertex_info[vertex].child:
-            if child not in visited and child not in stack:
+            if child not in visited:
+                stack.append(vertex)
                 stack.append(child)
+                break
 
 
 vertex_info = make_graph(edges)

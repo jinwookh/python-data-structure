@@ -42,6 +42,7 @@ def bfs(vertex_info):
     q.append(initial_vertex)
 
     while len(q) is not 0:
+
         vertex = q.popleft()
         print(vertex, end=" ")
         visited.add(vertex)
