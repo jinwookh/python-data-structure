@@ -4,13 +4,13 @@ implements various data structures with python.
 
 ## TODO implementations
 ### Stacks and queues
-- [ ] stack
-- [ ] queue
+- [x] stack
+- [x] queue
 - [ ] circular queue
 - [ ] convert infix expression to postfix expression: use stack
 
 ### Trees
-- [ ] inorder, preorder, postorder, iter-inorder
+- [x] inorder, preorder, postorder, iter-inorder
 - [ ] binary tree copy
 - [ ] satisfiability algorithm
 - [ ] max heap
